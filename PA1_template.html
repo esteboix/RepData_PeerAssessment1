@@ -313,7 +313,7 @@ i
 
 <p>OK, I&#39;m done, see you!</p>
 
-<p>I&#39;m joking, you&#39;re not going to get rid of me this easily. Here&#39;s what we&#39;re going to do: we&#39;re going to calculate the mean for each step in each day of the week, and then fill the missing values with these ones. To do that first we need to know which day of the week correspont to each date.</p>
+<p>I&#39;m joking, you&#39;re not going to get rid of me this easily. Here&#39;s what we&#39;re going to do: we&#39;re going to calculate the mean for each interval in each day of the week, and then fill the missing values with these ones. To do that first we need to know which day of the week correspond to each date.</p>
 
 <pre><code class="r">data$day &lt;- wday(data$date, label = TRUE)
 </code></pre>
@@ -325,7 +325,7 @@ i
     summarize(steps = mean(steps, na.rm = TRUE))
 </code></pre>
 
-<p>And here comes the meat. We merge the two datasets, we replace the <code>NA</code> with the value from the new column, and then we clean up the mess we&#39;ve.</p>
+<p>And here comes the meat. We merge the two datasets, we replace the <code>NA</code> with the value from the new column, and then we clean up the mess we&#39;ve made.</p>
 
 <pre><code class="r">datacomplete &lt;- merge(data, filler, by = c(&quot;day&quot;, &quot;interval&quot;))
 
@@ -338,7 +338,7 @@ datacomplete &lt;- datacomplete %&gt;%
 
 <p>Yes, I know I didn&#39;t have to arrange the dataset, but my OCD made me do it.</p>
 
-<p>Finally we can get the results. We&#39;ve done this before, so I&#39;m going to spare you the explanation, but what I&#39;m going ro do is repeat the first results to easily compare them.</p>
+<p>Finally we can get the results. We&#39;ve done this before, so I&#39;m going to spare you the explanation, but what I&#39;m going to do is repeat the first results to easily compare them.</p>
 
 <pre><code class="r">datacompleteday &lt;- datacomplete %&gt;%
     group_by(date) %&gt;%
@@ -384,7 +384,7 @@ d
 <pre><code>## [1] 10765
 </code></pre>
 
-<p>As I (blindly) expected, the results change a little bit from the original data. Maybe the strategy chosen to fill the missing data is not the best, or maybe I lack the statistical knowledge to say that the changes are so small that they are not relevant. I&#39;m inclined to say it&#39;s the second one.</p>
+<p>As I (blindly) expected, the results change a little bit from the original data. Maybe the strategy chosen to fill the missing data is not the best, or maybe I lack the statistical knowledge to say that the changes are so small that they are not relevant. I&#39;m inclined to say it&#39;s the first one.</p>
 
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>
 

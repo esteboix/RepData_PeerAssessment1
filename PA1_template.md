@@ -144,7 +144,7 @@ sum(is.na(data$steps))
 
 OK, I'm done, see you!
 
-I'm joking, you're not going to get rid of me this easily. Here's what we're going to do: we're going to calculate the mean for each step in each day of the week, and then fill the missing values with these ones. To do that first we need to know which day of the week correspont to each date.
+I'm joking, you're not going to get rid of me this easily. Here's what we're going to do: we're going to calculate the mean for each interval in each day of the week, and then fill the missing values with these ones. To do that first we need to know which day of the week correspond to each date.
 
 
 ```r
@@ -160,7 +160,7 @@ filler <- data %>%
     summarize(steps = mean(steps, na.rm = TRUE))
 ```
 
-And here comes the meat. We merge the two datasets, we replace the ```NA``` with the value from the new column, and then we clean up the mess we've.
+And here comes the meat. We merge the two datasets, we replace the ```NA``` with the value from the new column, and then we clean up the mess we've made.
 
 
 ```r
@@ -175,7 +175,7 @@ datacomplete <- datacomplete %>%
 
 Yes, I know I didn't have to arrange the dataset, but my OCD made me do it.
 
-Finally we can get the results. We've done this before, so I'm going to spare you the explanation, but what I'm going ro do is repeat the first results to easily compare them.
+Finally we can get the results. We've done this before, so I'm going to spare you the explanation, but what I'm going to do is repeat the first results to easily compare them.
 
 
 ```r
@@ -234,7 +234,7 @@ median(datadays$steps, na.rm = TRUE)
 ## [1] 10765
 ```
 
-As I (blindly) expected, the results change a little bit from the original data. Maybe the strategy chosen to fill the missing data is not the best, or maybe I lack the statistical knowledge to say that the changes are so small that they are not relevant. I'm inclined to say it's the second one.
+As I (blindly) expected, the results change a little bit from the original data. Maybe the strategy chosen to fill the missing data is not the best, or maybe I lack the statistical knowledge to say that the changes are so small that they are not relevant. I'm inclined to say it's the first one.
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
